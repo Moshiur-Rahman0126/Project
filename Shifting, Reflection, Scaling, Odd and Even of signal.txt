@@ -1,0 +1,150 @@
+clc
+t=-2:0.001:3 ;
+y1=(t+2).*(t>=-1 & t<0);
+y2=2.*(t>=0 & t<1);             
+y3=(t).*(t>=1 & t<2);
+y4=(t-1).*(t>=2 & t<3);
+y=y1+y2+y3+y4;
+plot(t, y);
+axis([-4 5 -1 5]);
+tL = xlim;
+yL = ylim;
+line([0 0], yL);  
+line(tL, [0 0]);  
+xlabel('t');
+ylabel('x(t)') ;
+title('Originial signal');
+
+//Shifting
+clc
+t=-2:0.001:5 ;
+y1=(t+1).*(t>=0 & t<1);
+y2=2*(t>=1 & t<2);             
+y3=(t-1).*(t>=2 & t<3);
+y4=(t-2).*(t>=3 & t<4);
+y=y1+y2+y3+y4;
+plot(t, y);
+axis([-4 5 -1 5]);
+tL = xlim;
+yL = ylim;
+line([0 0], yL);  
+line(tL, [0 0]);  
+xlabel('t');
+ylabel('x(t-1)') ;
+title('Shifting signal');
+
+
+//Reflection 
+clc
+t=-4:0.001:2 ;
+y1=(-t+2).*(t>0 & t<=1);
+y2=2*(t>-1 & t<=0);             
+y3=(-t).*(t>-2 & t<=-1);
+y4=(-t-1).*(t>-3 & t<=-2);
+y=y1+y2+y3+y4;
+plot(t, y);
+axis([-5 4 -5 5]);
+tL = xlim;
+yL = ylim;
+line([0 0], yL);  
+line(tL, [0 0]);  
+xlabel('t');
+ylabel('x(-t)') ;
+title('Reflection Signal');
+
+
+//Compressed
+clc
+t=-2:0.001:5 ;
+y1=(2*t+2).*(t>=-0.5 & t<0);
+y2=2*(t>=0 & t<0.5);             
+y3=(2*t).*(t>=0.5 & t<1);
+y4=(2*t-1).*(t>=1 & t<1.5);
+y=y1+y2+y3+y4;
+plot(t, y);
+axis([-4 5 -1 5]);
+tL = xlim;
+yL = ylim;
+line([0 0], yL);  
+line(tL, [0 0]);  
+xlabel('t');
+ylabel('x(2t)') ;
+title('Scaling signal');
+
+
+
+//Expanded
+clc
+t=-3:0.001:7 ;
+y1=((t/2)+2).*(t>=-2 & t<0);
+y2=2*(t>=0 & t<2);             
+y3=(t/2).*(t>=2 & t<4);
+y4=((t/2)-1).*(t>=4 & t<6);
+y=y1+y2+y3+y4;
+plot(t, y);
+axis([-4 8 -1 4]);
+tL = xlim;
+yL = ylim;
+line([0 0], yL);  
+line(tL, [0 0]);  
+xlabel('t');
+ylabel('x(t/2)') ;
+title('Scaling signal');
+
+
+
+
+//Even part
+clc
+t=-3:0.001:4 ;
+y1=(t+2).*(t>=-1 & t<0);
+y2=2.*(t>=0 & t<1);             
+y3=(t).*(t>=1 & t<2);
+y4=(t-1).*(t>=2 & t<3);
+
+y5=(-t+2).*(t>0 & t<=1);
+y6=2*(t>-1 & t<=0);             
+y7=(-t).*(t>-2 & t<=-1);
+y8=(-t-1).*(t>-3 & t<=-2);
+
+y_1=y1+y2+y3+y4;
+y_2=y5+y6+y7+y8;
+y=(y_1+y_2)/2;
+plot(t, y);
+axis([-4 5 -1 5]);
+tL = xlim;
+yL = ylim;
+line([0 0], yL);  
+line(tL, [0 0]);  
+xlabel('t');
+ylabel('(x(t)+x(-t))/2') ;
+title('Even signal');
+
+
+
+
+//Odd part
+clc
+t=-3:0.001:4 ;
+y1=(t+2).*(t>=-1 & t<0);
+y2=2*(t>=0 & t<1);             
+y3=(t).*(t>=1 & t<2);
+y4=(t-1).*(t>=2 & t<3);
+
+y5=(-t+2).*(t>0 & t<=1);
+y6=2*(t>-1 & t<=0);             
+y7=(-t).*(t>-2 & t<=-1);
+y8=(-t-1).*(t>-3 & t<=-2);
+
+y_1=y1+y2+y3+y4;
+y_2=y5+y6+y7+y8;
+y=(y_1-y_2)*0.5;
+plot(t, y);
+axis([-4 5 -1 5]);
+tL = xlim;
+yL = ylim;
+line([0 0], yL);  
+line(tL, [0 0]);  
+xlabel('t');
+ylabel('(x(t)-x(-t))/2') ;
+title('Odd signal');
